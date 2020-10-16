@@ -50,7 +50,7 @@ async def whois(client, message):
         return
     desc = await client.get_chat(get_user)
     desc = desc.description
-    await message.reply_text(
+    await message.edit_text(
             infotext.format(
                 full_name=FullName(user),
                 user_id=user.id,

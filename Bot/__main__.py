@@ -6,7 +6,7 @@ import traceback
 import logging
 from pyrogram import  idle, Client
 from Bot import app
-from Bot.modules import alive, admin, pin, whois
+from Bot.modules import alive, admin, pin, whois, dev
 
 
 app.start()
