@@ -19,10 +19,8 @@ def mainhelp(_, m):
 adminhelptext = f"""
 // ADMIN STUFF //
 .ban -> Bans user indefinitely.
-.ban 24 -> Bans user for 24hrs.,
 .unban -> Unbans the user.
 .mute -> Mutes user indefinitely.
-.mute 24 -> Bans user for 24hrs.
 .unmute -> Unmutes the user.
 .kick -> Kicks the user out of the group.
 .pin -> pins a message
