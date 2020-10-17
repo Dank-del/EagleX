@@ -22,9 +22,7 @@ async def CheckAdmin(message: Message):
         await message.delete()
 
     else:
-        if SELF.status is not admin:
-            return True
-        elif SELF.can_restrict_members:
+        if SELF.status is not admin or SELF.can_restrict_members:
             return True
         else:
             await message.edit("__No Permissions to restrict Members__")

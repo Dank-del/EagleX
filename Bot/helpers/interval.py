@@ -16,9 +16,7 @@ class IntervalHelper:
             raise Exception("Invalid interval format.")
 
     def interval_ok(self):
-        if IntervalHelper.interval_re.match(self._interval):
-            return True
-        return False
+        return bool(IntervalHelper.interval_re.match(self._interval))
 
     def to_secs(self):
         m = IntervalHelper.interval_re.match(self._interval)
