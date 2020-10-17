@@ -48,4 +48,5 @@ def alive(_, m):
       end_time = time.time()
       reply_msg += f"   **EagleX uptime**: {uptime}"
       photo = "https://telegra.ph/file/bf51cb37c64037205d849.jpg"
-      m.reply_photo(photo, caption=reply_msg)
+      m.delete()
+      app.send_photo(m.chat.id, photo, caption=reply_msg)

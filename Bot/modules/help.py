@@ -14,7 +14,8 @@ mainhelptext = f"""
 @app.on_message(filters.me & filters.regex("^\.help$"))
 def mainhelp(_, m): 
     photo = "https://telegra.ph/file/bf51cb37c64037205d849.jpg"
-    m.reply_photo(photo, caption = mainhelptext)
+    m.delete()
+    app.send_photo(m.chat.id, photo, caption = mainhelptext)
 
 adminhelptext = f"""
 // ADMIN STUFF //
@@ -29,7 +30,8 @@ adminhelptext = f"""
 @app.on_message(filters.me & filters.regex("^\.adminhelp$"))
 def adminhelp(_, m): 
     photo = "https://telegra.ph/file/bf51cb37c64037205d849.jpg"
-    m.reply_photo(photo, caption = adminhelptext)
+    m.delete()
+    app.send_photo(m.chat.id, photo, caption = adminhelptext)
     
 infohelptext = f"""
 // INFO STUFF //
@@ -39,7 +41,8 @@ infohelptext = f"""
 @app.on_message(filters.me & filters.regex("^\.infohelp$"))
 def infohelp(_, m): 
     photo = "https://telegra.ph/file/bf51cb37c64037205d849.jpg"
-    m.reply_photo(photo, caption = infohelptext)    
+    m.delete()
+    app.send_photo(m.chat.id, photo, caption = infohelptext)    
 
 
 devhelptext = f"""
@@ -51,6 +54,7 @@ devhelptext = f"""
 @app.on_message(filters.me & filters.regex("^\.devhelp$"))
 def devhelp(_, m): 
     photo = "https://telegra.ph/file/bf51cb37c64037205d849.jpg"
-    m.reply_photo(photo, caption = devhelptext)
+    m.delete()
+    app.send_photo(m.chat.id, photo, caption = devhelptext)
     
     
