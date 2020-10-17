@@ -36,21 +36,16 @@ def get_readable_time(seconds: int) -> str:
 
     return ping_time
 
-start_time = time.time()
-uptime = get_readable_time((time.time() - StartTime))
-end_time = time.time()
-ping_time = round((end_time - start_time) * 1000, 3)
-
-output = f"""
-**EagleX.**
-**Uptime** : `{uptime}`
-**Ping**: `{ping_time}ms`
-    **Python**: `{__python_version__}`
-    **@Pyrogram**: `{__pyro_version__}`
-    **Source**: github.com/Dank-del/EagleX 
-"""
 
 @app.on_message(filters.me & filters.regex("^\.alive$"))
 def alive(_, m): 
-   photo = "https://telegra.ph/file/bf51cb37c64037205d849.jpg"
-   m.reply_photo(photo, caption=output)
+      start_time = time.time()
+      uptime = get_readable_time((time.time() - StartTime))
+      reply_msg = f"**EagleX**\n"
+      reply_msg += f"   **Python**: `{__python_version__}`\n"
+      reply_msg += f"   **@Pyrogram version**: `{__pyro_version__}`\n"
+      reply_msg += f"   **Source**: github.com/Dank-del/EagleX\n"
+      end_time = time.time()
+      reply_msg += f"   **EagleX uptime**: {uptime}"
+      photo = "https://telegra.ph/file/bf51cb37c64037205d849.jpg"
+      m.reply_photo(photo, caption=reply_msg)
