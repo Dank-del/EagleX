@@ -3,6 +3,13 @@ import sys
 import time
 from pyrogram import Client, errors
 from Bot.config import Config
+import logging
+
+logging.basicConfig(
+    level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+)
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
+
 
 StartTime = time.time()
 
