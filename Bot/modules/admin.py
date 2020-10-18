@@ -1,5 +1,4 @@
 import time
-
 from pyrogram import filters
 from pyrogram.types import Message, ChatPermissions
 
@@ -131,3 +130,4 @@ async def kick_user(_, message: Message):
             await message.edit(f"{mention}, was kicked.")
         except UserAdminInvalid:
             await RestrictFailed(message)
+
