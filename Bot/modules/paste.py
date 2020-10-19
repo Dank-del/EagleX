@@ -6,15 +6,13 @@ from pyrogram.types import Message
 from Bot import app
 
 
-@app.on_message(filters.command(['neko', 'nekobin', 'bin', 'paste'], ".") & filters.me)
+@app.on_message(filters.command(["neko", "nekobin", "bin", "paste"], ".") & filters.me)
 async def paste(_, message: Message):
     text = message.reply_to_message.text
     try:
         async with aiohttp.ClientSession() as session:
             async with session.post(
-                    'https://nekobin.com/api/documents',
-                    json={"content": text},
-                    timeout=3
+                "https://nekobin.com/api/documents", json={"content": text}, timeout=3
             ) as response:
                 key = (await response.json())["result"]["key"]
     except Exception:
@@ -23,20 +21,25 @@ async def paste(_, message: Message):
         await message.delete()
         return
     else:
-        url = f'https://nekobin.com/{key}'
-        reply_text = f'Nekofied to **Nekobin** : {url}'
-        delete = True if len(message.command) > 1 \
-                         and message.command[1] in ['d', 'del'] \
-                         and message.reply_to_message.from_user.is_self else False
+        url = f"https://nekobin.com/{key}"
+        reply_text = f"Nekofied to **Nekobin** : {url}"
+        delete = (
+            True
+            if len(message.command) > 1
+            and message.command[1] in ["d", "del"]
+            and message.reply_to_message.from_user.is_self
+            else False
+        )
         if delete:
             await asyncio.gather(
-                app.send_message(message.chat.id, reply_text, disable_web_page_preview=True),
+                app.send_message(
+                    message.chat.id, reply_text, disable_web_page_preview=True
+                ),
                 message.reply_to_message.delete(),
-                message.delete()
+                message.delete(),
             )
         else:
             await message.edit_text(
                 reply_text,
                 disable_web_page_preview=True,
             )
-

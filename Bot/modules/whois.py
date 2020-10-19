@@ -6,6 +6,7 @@ from pyrogram.raw import functions
 from pyrogram.errors import PeerIdInvalid
 from Bot import app
 
+
 def ReplyCheck(message: Message):
     reply_id = None
 
@@ -17,20 +18,22 @@ def ReplyCheck(message: Message):
 
     return reply_id
 
+
 infotext = (
     "**[{full_name}](tg://user?id={user_id})**\n"
     " > UserID: `{user_id}`\n"
     " > First Name: `{first_name}`\n"
     " > Last Name: `{last_name}`\n"
     " > Username: `{username}`\n"
-    " > Bio: {bio}")
-
+    " > Bio: {bio}"
+)
 
 
 def FullName(user: User):
     return user.first_name + " " + user.last_name if user.last_name else user.first_name
 
-@app.on_message(filters.command('whois', '.') & filters.me)
+
+@app.on_message(filters.command("whois", ".") & filters.me)
 async def whois(client, message):
     cmd = message.command
     if not message.reply_to_message and len(cmd) == 1:

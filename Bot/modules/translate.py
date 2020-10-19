@@ -6,14 +6,18 @@ from Bot import app
 
 trl = Translator()
 
+
 async def edrep(msg: Message, **kwargs):
     func = msg.edit_text if msg.from_user.is_self else msg.reply
     spec = getfullargspec(func.__wrapped__).args
     await func(**{k: v for k, v in kwargs.items() if k in spec})
 
-@app.on_message(filters.command('tr','.') & filters.me)
+
+@app.on_message(filters.command("tr", ".") & filters.me)
 async def translate(_client, message):
-    if message.reply_to_message and (message.reply_to_message.text or message.reply_to_message.caption):
+    if message.reply_to_message and (
+        message.reply_to_message.text or message.reply_to_message.caption
+    ):
         if len(message.text.split()) == 1:
             await edrep(message, text="Usage: Reply to a message, then `tr <lang>`")
             return
@@ -41,4 +45,7 @@ async def translate(_client, message):
             await edrep(message, text="Error: `{}`".format(str(err)))
             return
 
-    await edrep(message, text=f"Translated from `{detectlang.lang}` to `{target}`:\n```{tekstr.text}```")
+    await edrep(
+        message,
+        text=f"Translated from `{detectlang.lang}` to `{target}`:\n```{tekstr.text}```",
+    )

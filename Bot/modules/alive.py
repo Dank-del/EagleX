@@ -12,6 +12,7 @@ __micro__ = 1
 
 __python_version__ = f"{version_info[0]}.{version_info[1]}.{version_info[2]}"
 
+
 def get_readable_time(seconds: int) -> str:
     count = 0
     ping_time = ""
@@ -38,15 +39,15 @@ def get_readable_time(seconds: int) -> str:
 
 
 @app.on_message(filters.me & filters.regex("^\.alive$"))
-def alive(_, m): 
-      start_time = time.time()
-      uptime = get_readable_time((time.time() - StartTime))
-      reply_msg = f"**EagleX**\n"
-      reply_msg += f"   **Python**: `{__python_version__}`\n"
-      reply_msg += f"   **@Pyrogram version**: `{__pyro_version__}`\n"
-      reply_msg += f"   **Source**: github.com/Dank-del/EagleX\n"
-      end_time = time.time()
-      reply_msg += f"   **EagleX uptime**: {uptime}"
-      photo = "https://telegra.ph/file/bf51cb37c64037205d849.jpg"
-      m.delete()
-      app.send_photo(m.chat.id, photo, caption=reply_msg)
+def alive(_, m):
+    start_time = time.time()
+    uptime = get_readable_time((time.time() - StartTime))
+    reply_msg = f"**EagleX**\n"
+    reply_msg += f"   **Python**: `{__python_version__}`\n"
+    reply_msg += f"   **@Pyrogram version**: `{__pyro_version__}`\n"
+    reply_msg += f"   **Source**: github.com/Dank-del/EagleX\n"
+    end_time = time.time()
+    reply_msg += f"   **EagleX uptime**: {uptime}"
+    photo = "https://telegra.ph/file/bf51cb37c64037205d849.jpg"
+    m.delete()
+    app.send_photo(m.chat.id, photo, caption=reply_msg)
