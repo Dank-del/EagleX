@@ -62,7 +62,7 @@ def devhelp(_, m):
 mischelptext = f"""
 『 MISC 』
   .paste -> paste text to nekobin.
-  .tr (ang_code) -> translate text message.
+  .tr (lang_code) -> translate text message.
 """
 
 
